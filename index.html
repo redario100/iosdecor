@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fly View</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+ <style>
+
+html,body,li,a,h1,span, div
+{
+font-family: 'Josefin Sans', sans-serif;
+}
+
+#bloc0
+{
+width:29%;
+float:left;
+margin:2%;
+}
+
+
+.khokho
+{
+border-bottom: 4px solid #b4479a !important;
+}
+
+.khokho1
+{
+border-bottom: 4px solid #f9f8f8 !important;
+}
+
+
+.btnext
+{
+    width: 21px;
+    float: left;
+    padding: 10px;
+    margin-left: 13px;
+    border-radius: 59px;
+    background: #f7f5f5;
+}
+
+
+.ui-btn-text {
+font-family: 'Dancing Script', cursive;
+    font-size: 1.2em;
+}
+
+
+
+.imgmeni
+{
+	width: 28px;
+    float: right;
+    display: block;
+    vertical-align: middle;
+    margin-top: -25px;
+}
+
+.montitre {
+	color: black;
+    padding: 0px 20px;
+    text-align: left;
+    font-size: 2.2em;
+    margin-top: -59px;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: none !important;
+    width: 86%;
+    position: absolute;
+    z-index: 200;
+}
+
+
+.montitre2 {
+    color: black;
+    font-family: 'Dancing Script', cursive;
+    padding: 0.8em 4%;
+    text-align: left;
+    /* position: absolute; */
+    font-size: 1.8em;
+    margin-top: -73px;
+    text-shadow: none;
+    width: 86%;
+    position: absolute;
+    z-index: 999;
+}
+}
+
+.btnext2
+{
+transition:0.3s;
+transform:scale(1.1);
+background:silver;
+box-shadow:0 0 0.4em grey !important;
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Exo 2 Light'), local('Exo2-Light'), url(gft.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+@font-face {
+  font-family: 'Exo 2';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Exo 2 Light'), local('Exo2-Light'), url(mima.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+1000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+
+
+#setcacont, html, body, div {
+	-webkit-overflow-scrolling: touch; 
+}
+
+#navbar {
+    
+	 position:fixed !important;
+	 margin: 0;
+  top: 0;
+  left: 0;
+}
+
+.bimbo
+{
+    float: left;
+    margin-right: 1%;
+    margin-left: 1%;
+    width: 22%;
+    font-size: 13.5px;
+    color: #404040;
+    padding: 14px 1px;
+    border-bottom: 4px solid #f9f8f8 !important;
+    text-align: center;
+}
+
+.bimbo2
+{
+    float: left;
+    margin-right: 1%;
+    margin-left: 1%;
+    width: 22%;
+    font-size: 13.5px;
+    color: #404040;
+    padding: 14px 1px;
+    text-align: center;
+}
+</style>
+<link rel="stylesheet" href="./jquery.mobile-1.4.5.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Courgette|Jaldi" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="flaticon.css"> 
+<link rel="stylesheet" href="verte.min.css" />
+<link rel="stylesheet" href="flycss.css" />
+<script src="./jquery-1.11.1.min.js"></script>
+<script src="./jquery.mobile-1.4.5.min.js"></script>
+<script src="./cordova.js" onload="javascript:window.isCordovaApp = true;"></script>
+
+
+	<script>
+	
+	
+	function bibi()
+	{
+	var k=$( "#myInp" ).val();
+	window.location.href = "https://passiondecor.net/module/categorysearch/catesearch?fc=module&module=categorysearch&controller=catesearch&orderby=position&orderway=desc&search_query="+k+"&search_category=all&submit_search=";
+	}
+	
+	function load_home(url) {
+	$('#bg1').show();
+	$('#loader1').show();
+	document.getElementById("mapage").innerHTML='<object style="width:100%;height:100%;" type="text/html" data="'+url+'" ></object>';
+
+	setTimeout(function(){ 
+	$('#bg1').hide();
+	$('#loader1').hide();
+	 }, 3500);
+}
+	   function bloc1()
+{
+ $.ajax({
+         data: "bloc1=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc1').html('<img style="width:50px;" src="load.gif">');
+    },
+    success: function(data)
+    {
+		$('#bloc1').hide();
+        $('#bloc1').html(data);
+		setTimeout(function(){ 
+		$('#bloc1').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc1').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	   
+	   	   function bloc2()
+{
+ $.ajax({
+         data: "bloc2=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc2').html('');
+    },
+    success: function(data)
+    {
+		$('#bloc2').hide();
+        $('#bloc2').html(data);
+			setTimeout(function(){ 
+		$('#bloc2').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc2').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	   	   function bloc3()
+{
+ $.ajax({
+         data: "bloc3=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc3').html('');
+    },
+    success: function(data)
+    {
+		$('#bloc3').hide();
+        $('#bloc3').html(data);
+		setTimeout(function(){ 
+		$('#bloc3').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc3').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	   	   function bloc4()
+{
+ $.ajax({
+         data: "bloc4=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc4').html('');
+    },
+    success: function(data)
+    {
+		$('#bloc4').hide();
+        $('#bloc4').html(data);
+		setTimeout(function(){ 
+		$('#bloc4').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc4').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	   
+	   	   function bloc5()
+{
+ $.ajax({
+         data: "bloc5=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc5').html('');
+    },
+    success: function(data)
+    {
+		$('#bloc5').hide();
+        $('#bloc5').html(data);
+			setTimeout(function(){ 
+		$('#bloc5').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc5').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	   
+	   	   function bloc6()
+{
+ $.ajax({
+         data: "bloc6=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc6').html('');
+    },
+    success: function(data)
+    {
+		$('#bloc6').hide();
+        $('#bloc6').html(data);
+		setTimeout(function(){ 
+		$('#bloc6').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc6').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	    function bloc0()
+		{
+
+
+		}
+	   	   function bloc7()
+{
+ $.ajax({
+         data: "bloc7=ok",
+         type: "get",
+         url: "http://passiondecor.net/appi/requete/action.php",
+		
+   beforeSend: function()
+    {
+$('#bloc7').html('');
+    },
+    success: function(data)
+    {
+		$('#bloc7').hide();
+        $('#bloc7').html(data);
+				setTimeout(function(){ 
+		$('#bloc7').fadeIn();
+		}, 1000);
+		
+    },
+    error: function()
+    {
+        $('#bloc7').html('error');
+    }
+});
+  
+	  
+	   }
+	   
+	   function koko()
+	  {
+	   
+	  setTimeout(function(){ $("#loado").attr('src', 'load/2.png'); }, 500);
+	  setTimeout(function(){ $("#loado").attr('src', 'load/3.png'); }, 1500);
+	  setTimeout(function(){ $("#loado").attr('src', 'load/4.png'); }, 2000);
+	  setTimeout(function(){ $("#loado").attr('src', 'load/5.png'); }, 2500);
+	   setTimeout(function(){ $("#loado").attr('src', 'load/6.png'); }, 3000);
+	    setTimeout(function(){ $("#loado").attr('src', 'load/7.png'); }, 3500);
+		 setTimeout(function(){ $("#loado").attr('src', 'load/8.png'); }, 4000);
+		  setTimeout(function(){ $("#loado").attr('src', 'load/9.png'); }, 4500);
+		   setTimeout(function(){ $("#loado").attr('src', 'load/10.png'); }, 5000);
+		    setTimeout(function(){ $("#loado").attr('src', 'load/11.png'); }, 5500);
+			 setTimeout(function(){ $("#loado").attr('src', 'load/1.png'); }, 6000);
+			 	 setTimeout(function(){ $("#loado").attr('src', 'load/1.png'); }, 6500);
+				 setTimeout(function(){ $("#loado").hide();}, 7000);
+				  setTimeout(function(){ $("#loado2").hide();}, 7000);
+	   
+	   }
+	   
+</script>
+</head>
+<body onload="bloc1();bloc2();bloc3();bloc4();bloc5();bloc6();koko()">
+<div  id="loado2" style="position:fixed;width:100%;height:100%;z-index:9999999;background-color:white;"></div>
+<img id="loado" style="transition: 0.5s;
+    z-index: 999999999999999999999;
+    position: absolute;
+    width: 70px;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 43%;
+    margin-left: auto;" src="load/2.png">
+<div id="bg1" style="background:#ffffffb8;position:absolute;width:100%;top:0px;height:100%;z-index:9990;display:none;" ></div>
+<img id="loader1" style="display:none;width:50px;z-index:9991;position:absolute;left:0;right:0;margin-left:auto;margin-right:auto;top:48%;" src="load.gif">
+<div data-role="page" style="background-color:white;" id="page1">
+<div data-role="panel" style="box-shadow: 4px 0px -5px 2em grey !important;z-index:10000;" id="left-panel"  data-display="overlay" data-position-fixed="true" > <!--data-display="overlay"-->
+<img src="logo1.png" style="width: 98%;margin-top: 45px;margin: 1px 0 0 2%;">
+<ul data-role="listview" class="ui-listview">
+<li data-role="list-divider" style="font-family: AlishaderDemo;
+    color: #9e017f;
+    font-weight: normal !important;
+    font-size: 3em !important;
+    text-align: center;" role="heading" class="menuleft ui-li ui-li-divider ui-bar-d ui-first-child">Bonjour</li>
+	<a data-transition="slide"  href="#page1"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div class="ui-btn-inner ui-li"><div class="ui-btn-text" style="font-weight:bold">Accueil</div><img class="imgmeni" src="home.png"></div></li></a>
+	<a data-transition="slide"  href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/commande')" class="ui-btn-inner ui-li"><div class="ui-btn-text" style="font-weight:bold">Mes Commandes</div><img class="imgmeni" src="box.png"></div></li></a>
+	<a data-transition="slide"  href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/connexion?back=my-account')" class="ui-btn-inner ui-li"><div class="ui-btn-text" style="font-weight:bold">Mon Compte</div><img class="imgmeni" src="user.png"></div></li></a>
+	<!--<a data-transition="slide"  href="#page1"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div class="ui-btn-inner ui-li"><div class="ui-btn-text" style="font-weight:bold">Parrainage</div><img class="imgmeni" src="handshake.png"></div></li></a>
+	<a data-transition="slide"  href="#page1"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div class="ui-btn-inner ui-li"><div class="ui-btn-text" style="font-weight:bold">Catalogue</div><img class="imgmeni" src="open-book.png"></div></li></a>-->
+					
+					<a data-transition="slide"  href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/housse-de-chaise-13')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Housse de chaise</div></div></li></a>
+					<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/n%C5%93ud-de-chaise-63')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Noeud de chaise</div></div></li></a>
+				    <a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/chemin-de-table-46')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Chemin de table</div></div></li></a>
+				    <a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/nappe-serviette-pas-cher-40')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Nappe pas cher</div></div></li></a>
+				    <a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/serviette-de-table-47')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Serviette de table</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/vase-martini-30')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Vase Martini</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/vase-alu-48')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Vase Alu</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/verrerie-49')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Verrerie</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/accessoire-de-decoration-42')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Accessoire de décoration</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/boule-de-fleurs-50')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Boule de Fleurs</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/fleur-artificielle-51')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Fleur artificielle</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/plume-52')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Plume</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/projecteur-led-53')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Projecteur & Led</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/chandelier-lanterne-54')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Chandelier & Lanterne</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/arbre-artificiel-55')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Arbre Artificiel</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/colonne-diamant-56')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Colonne Diamant</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/presentoir-gateaux-64')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Présentoir Gâteaux</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/table-de-reception-57')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Table de Réception</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/tapis-de-ceremonie-59')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Tapis de Cérémonie</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/allee-centrale-60')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Allée Centrale</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/vaisselle-de-table-61')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Vaisselle de table</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/rideau-led-et-voilage-66')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Rideau Led & Voilage</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/mur-floral-62')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Mur Floral</div></div></li></a>
+				<a data-transition="slide" href="#page2"><li data-corners="false" data-shadow="false"  data-wrapperels="div" data-theme="d" class="bnx"><div onclick="load_home('https://passiondecor.net/fr/trone-et-coin-maries-65')" class="ui-btn-inner ui-li"><div class="ui-btn-text">Trône & Coin Mariés</div></div></li></a>
+		</ul>   
+
+
+   </div>    
+
+	<div id="navbar" style='padding:10px 0px !important;' data-position="fixed" data-role="header">
+	<a href="#left-panel" data-theme="d" data-iconpos="notext" data-shadow="false" class="hidebg" data-iconshadow="false"><img class="imgbt" src="menu.png"></a>
+		<h1><button onclick="bibi()" style="float: left;opacity: 0;">send</button><input type="text" id="myInp" style="border:1px solid #f0f0f0;float: left;margin-top: -31px !important;" ></h1>
+<div style="float:right;margin-top:-43px;">
+		<a href="#page2" data-transition="slide" data-theme="d" data-iconpos="notext" data-shadow="false" class="hidebg" data-iconshadow="false">
+		<img onclick="load_home('https://passiondecor.net/commande')" style="float:right;margin-right:20px;" class="imgbt" src="shopping-cart.png">
+		</a>
+	
+	</div>	</div><!-- /header -->
+	
+				<div id="setcacont" style="position:absolute;width:100%;height:100%;left:0;right:0;margin-left:auto;margin-right:auto;color:gray;font-size:15px;text-align:center;">
+<div style="float:left;width:100%;background:#f9f8f8;color:#404040;height:50px;">
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/nouveaux-produits');$('.nouv').addClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo">Nouveautés</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/promotions');$('.nouv').removeClass('khokho');$('.nouv2').addClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo">Promotions</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/meilleures-ventes');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').addClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo">Best-seller</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/module/flashsales/display');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').addClass('khokho');" class="bimbo" >Ventes Flash</div></a>
+</div>
+<!--<div style="float:left;width:100%;">
+				<div id="bloc0">
+<img style="width:50%" src="cash.png"><br/>
+<strong>Sécurité</strong>
+</div>
+
+<div id="bloc0">
+<img style="width:50%" src="del.png"><br/>
+<strong>Livraison Rapide</strong>
+</div>
+
+<div id="bloc0" >
+<img style="width:50%" src="pig.png"><br/>
+<strong>Economie</strong>
+</div></div>-->
+				<div id="bloc1" style="float:left;width:98%;margin:2px 0% 0% 1%;">
+
+</div>
+<div id="bloc2" style="float:left;width:98%;margin:1%;display:block !important">
+</div>
+
+<div id="bloc3" style="float:left;width:98%;margin:1%;display:block !important">
+
+</div>
+	
+<div id="bloc4" style="float:left;width:98%;margin:1%;display:block !important">
+
+</div>
+<div id="bloc5" style="float:left;width:98%;margin:1%;display:block !important">
+
+</div>	
+
+<div id="bloc6" style="float:left;width:98%;margin:1%;display:block !important">
+</div>
+
+<div id="bloc7" style="float:left;width:98%;margin:1%;display:block !important">
+</div>
+
+			</div>
+ </div>
+<div data-role="page" style="background-color:white;" id="page2">
+
+	<div id="navbar" style='padding:10px 0px !important;' data-position="fixed" data-role="header">
+<a data-transition="slide" data-direction="reverse" href="#page1" data-theme="d"  data-iconpos="notext" data-shadow="false" class="hidebg" data-iconshadow="false"><img class="imgbt" style="vertical-align: middle;width: 24px !important;color: white;margin-top: 14px !important;" src="back.png"> </a>
+<h1><button onclick="bibi()" style="float: left;opacity: 0;">send</button><input type="text" id="myInp" style="border:1px solid #f0f0f0;float: left;margin-top: -31px !important;" ></h1>
+<div style="float:right;margin-top:-43px;">
+		<a href="#page2" data-transition="slide" data-theme="d" data-iconpos="notext" data-shadow="false" class="hidebg" data-iconshadow="false">
+		<img onclick="load_home('https://passiondecor.net/commande')" style="float:right;margin-right:20px;" class="imgbt" src="shopping-cart.png">
+		</a>
+	
+	</div>	</div>
+	
+<div style="float:left;width:100%;background:#f9f8f8;color:#404040;height:50px;">
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/nouveaux-produits');$('.nouv').addClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo2 nouv">Nouveautés</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/promotions');$('.nouv').removeClass('khokho');$('.nouv2').addClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo2 nouv2">Promotions</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/meilleures-ventes');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').addClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo2 nouv3">Best-seller</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('#');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').addClass('khokho');" class="bimbo2 nouv4" >Ventes Flash</div></a>
+</div>
+
+
+<div id="mapage" style="margin-top: 51px;position:absolute;width:100%;height:100%;left:0;right:0;margin-left:auto;margin-right:auto;color:gray;font-size:15px;text-align:center;">
+
+</div>
+</div>
+
+</body>
+</html>
