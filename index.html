@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fly View</title>
+	<title>Passiondecor</title>
 	 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	 <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
@@ -163,23 +163,37 @@ box-shadow:0 0 0.4em grey !important;
 
 	<script>
 	
-	
+
 	function bibi()
 	{
 	var k=$( "#myInp" ).val();
 	window.location.href = "https://passiondecor.net/module/categorysearch/catesearch?fc=module&module=categorysearch&controller=catesearch&orderby=position&orderway=desc&search_query="+k+"&search_category=all&submit_search=";
 	}
+
+
+	
 	
 	function load_home(url) {
 	$('#bg1').show();
 	$('#loader1').show();
-	document.getElementById("mapage").innerHTML='<object style="width:100%;height:15000px;" type="text/html" data="'+url+'" ></object>';
-
+	document.getElementById("mapage").innerHTML="";
+	document.getElementById("mapage").innerHTML='<iframe id="jijo" scrolling="yes" frameBorder="0" style="width:100%;height:100%;" type="text/html" src="'+url+'" ></iframe>';
+	document.getElementById('jijo').src = url;
+	//document.getElementById("mapage").innerHTML='<iframe id="jijo" style="width:100%;height:100%;" type="text/html" src="'+url+'" ></iframe>';
+ 
 	setTimeout(function(){ 
 	$('#bg1').hide();
 	$('#loader1').hide();
-	 }, 4500);
+
+	 }, 3500);
+	
 }
+
+
+
+
+
+
 	   function bloc1()
 {
  $.ajax({
@@ -411,6 +425,9 @@ $('#bloc7').html('');
 	   
 	   }
 	   
+
+	
+	
 </script>
 </head>
 <body onload="bloc1();bloc2();bloc3();bloc4();bloc5();bloc6();koko()">
@@ -543,11 +560,11 @@ $('#bloc7').html('');
 <a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/nouveaux-produits');$('.nouv').addClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo2 nouv">Nouveautés</div></a>
 <a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/promotions');$('.nouv').removeClass('khokho');$('.nouv2').addClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo2 nouv2">Promotions</div></a>
 <a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/meilleures-ventes');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').addClass('khokho');$('.nouv4').removeClass('khokho');" class="bimbo2 nouv3">Best-seller</div></a>
-<a data-transition="slide" href="#page2"><div onclick="load_home('#');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').addClass('khokho');" class="bimbo2 nouv4" >Ventes Flash</div></a>
+<a data-transition="slide" href="#page2"><div onclick="load_home('https://passiondecor.net/module/flashsales/display');$('.nouv').removeClass('khokho');$('.nouv2').removeClass('khokho');$('.nouv3').removeClass('khokho');$('.nouv4').addClass('khokho');" class="bimbo2 nouv4" >Ventes Flash</div></a>
 </div>
 
 
-<div id="mapage" style="margin-top: 51px;position:absolute;overflow:auto;width:100%;height:100%;left:0;right:0;margin-left:auto;margin-right:auto;color:gray;font-size:15px;text-align:center;">
+<div id="mapage" style="margin-top: 51px;position:absolute;width:100%;height:100%;left:0;right:0;margin-left:auto;margin-right:auto;color:gray;font-size:15px;text-align:center;">
 
 </div>
 </div>
